@@ -1,3 +1,12 @@
 <h1>
   {{title}}
 </h1>
+
+<textarea [(ngModel)]="input" (change)="pasted($event)"></textarea>
+<div>{{output}}</div>
+<hr>
+Data:
+<div *ngFor="let thread of threads">{{thread.threadName}} #{{thread.threadId}}<br/>
+  <span *ngFor="let trace of thread.stackTrace">{{trace.className}}.{{trace.methodName}}({{trace.fileName}}:{{trace.lineNumber}})<br/></span>
+  <hr>
+</div>
