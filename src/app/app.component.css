@@ -1,0 +1,26 @@
+span.blocked {
+  background-color: lightpink;
+  color: darkred;
+}
+
+span.waiting {
+  background-color: palegoldenrod;
+  color: darkorange;
+}
+
+div.stacktrace {
+  font-family: monospace;
+  padding-left: 20px;
+}
+
+span.WAITING {
+  color: darkslateblue;
+}
+
+span.TIMED_WAITING {
+  color: darkblue;
+}
+
+span.RUNNABLE {
+  color: darkgreen;
+}

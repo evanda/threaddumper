@@ -2,21 +2,23 @@
   {{title}}
 </h1>
 
-<textarea [(ngModel)]="input" (change)="pasted($event)"></textarea>
+<textarea (change)="pasted($event)"></textarea>
 <div>{{output}}</div>
 <hr>
 Data:
-<div *ngFor="let thread of threads">{{thread.threadName}} #{{thread.threadId}}<br/>
-  <span>{{thread.threadState}}<br/></span>
-  <div *ngIf="thread.lockName"><b>Lock: {{thread.lockName}} - owner: {{thread.lockOwnerName}} ({{thread.lockOwnerId}})</b><br/></div>
+<div *ngFor="let thread of threads"><h3>{{thread.threadName}} #{{thread.threadId}}</h3><br/>
+  <span class="{{thread.threadState}}">{{thread.threadState}}<br/></span>
+  <div *ngIf="thread.lockName">Lock: {{thread.lockName}} - owner: {{thread.lockOwnerName}} ({{thread.lockOwnerId}})<br/></div>
   <span *ngIf="thread.blockedTime > 0" class="blocked">BLOCKED - {{thread.blockedTime}} time units, {{thread.blockedCount}} block count<br/></span>
   <span *ngIf="thread.waitedTime > 0" class="waiting">WAITING - {{thread.waitedTime}} time units, {{thread.waitedCount}} wait count<br/></span>
   <span *ngIf="thread.isNative">IS NATIVE THREAD<br/></span>
   <span *ngIf="thread.suspended">SUSPENDED<br/></span>
-  <span *ngFor="let trace of thread.stackTrace">
+  <div class="stacktrace">
+    <span *ngFor="let trace of thread.stackTrace">
     {{trace.className}}.{{trace.methodName}}({{trace.fileName}}:{{trace.lineNumber}})
     <span *ngIf="trace.nativeMethod"><i>(native method)</i></span>
     <br/>
   </span>
+  </div>
   <hr>
 </div>
